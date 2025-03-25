@@ -132,7 +132,10 @@ $(document).ready(function () {
         const sectionTitle = $(`.section[data-topic="${topicId}"]`).text();
         $('.questionSectionHeader').text(sectionTitle);
 
-        const questions = $(xml).find(`record:has(Topic_ID:contains(${topicId}))`);
+        // Filter records by matching Topic_ID with non-strict equality (==)
+        const questions = $(xml).find('record').filter(function() {
+            return $.trim($(this).find('Topic_ID').text()) == topicId;
+        });
         questions.each(function () {
             const questionText = $(this).find('Question').text();
             const questionId = $(this).find('Question_ID').text();

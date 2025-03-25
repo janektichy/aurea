@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadFAQMetaTags(topicId, questionId) {
         $.ajax({
             type: "GET",
-            url: "/user/documents/upload/res/MAPA.xml",
+            url: "/user/documents/DataStructures/FAQ/MAPA.xml",
             dataType: "xml",
             success: function (xml) {
                 let found = false;
