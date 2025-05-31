@@ -5,26 +5,20 @@ $(document).ready(function () {
     const $questionsContainer = $('#questions');
     let storedData = {};
 
-    var marker = document.getElementById('page-meta-marker');
-    if (marker) {
-        let pageKey = marker.getAttribute('data-page-key');
-        if (pageKey === 'FAQ_Page_Id') {
-            $.ajax({
-                type: "GET",
-                url: "/user/documents/DataStructures/FAQ/MAPA.xml",
-                dataType: "xml",
-                success: function (data) {
-                    xml = data;
-                    storeData(xml);
-                    initializeSections(xml);
-                },
-                error: function () {
-                    console.error("Failed to load XML data.");
-                }
-            });
+    $.ajax({
+        type: "GET",
+        url: "/user/documents/DataStructures/FAQ/MAPA.xml",
+        dataType: "xml",
+        success: function (data) {
+            xml = data;
+            storeData(xml);
+            initializeSections(xml);
+        },
+        error: function () {
+            console.error("Failed to load XML data.");
         }
-    }
-
+    });
+    
     function storeData(xml) {
         $(xml).find('record').each(function () {
             const topicId = $(this).find('Topic_ID').text();

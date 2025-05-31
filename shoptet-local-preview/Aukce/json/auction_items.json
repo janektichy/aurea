@@ -1,0 +1,25 @@
+{
+    "items" : [
+        {
+            "image" : "/user/documents/ViewScripts/Aukce/images/auction_items_preview_1.jpg",
+            "title" : "Ferdinand III.",
+            "category" : "1637 - 1657",
+            "price" : "500 000 Kč",
+            "item_link" : "https://livebid.cz/auction/aurea_116/detail/263"
+        },
+        {
+            "image" : "/user/documents/ViewScripts/Aukce/images/auction_items_preview_2.jpg",
+            "title" : "Ferdinand II.",
+            "category" : "1619 - 1637",
+            "price" : "700 000 Kč",
+            "item_link" : "https://livebid.cz/auction/aurea_116/detail/231"
+        },
+        {
+            "image" : "/user/documents/ViewScripts/Aukce/images/auction_items_preview_3.jpg",
+            "title" : "Československo",
+            "category" : "1918 - 1939",
+            "price" : "1 200 000 Kč",
+            "item_link" : "https://livebid.cz/auction/aurea_116/detail/561"
+        }
+    ]
+}

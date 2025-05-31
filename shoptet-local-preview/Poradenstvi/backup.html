@@ -1,0 +1,442 @@
+<style><!--
+    @media only screen and (max-width: 1200px) {
+        .external-fonts-loaded body .container, body.blank-mode .container, body .container {
+            padding: 0px !important;
+        }
+    }
+    #content-wrapper {
+                padding: inherit; 
+                max-width: none !important;
+                width: 100%;
+            }
+            #footer {
+                margin-top: 0px;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: white;
+                color: #333;
+            }
+            .content-wrapper-in {
+                width: 100%;
+            }
+            .container.breadcrumbs-wrapper {
+                display: none;
+            }
+            article > header {
+                display: none;
+            }
+            .footer-rows {
+                display: none;
+            }
+            .main_container {
+                padding: 10px 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .header {
+                text-align: center;
+                background-color: #eef;
+                padding: 20px 20px 0 20px;
+                border-bottom: 3px solid #003366;
+            }
+            .header h1 {
+                color: #003366;
+                font-size: 24px;
+                margin: 0;
+                text-align: center !important;
+            }
+            .descrpition_title {
+                font-size: 16px;
+                margin: none;
+                text-align: center;
+            }
+            .buttons {
+                display: flex;
+                justify-content: center;
+                gap: 10px 50px;;
+                margin-top: 10px;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .header_button {
+                background-color: #f7f7f9;
+                border: none;
+                padding: 12px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border: 1px solid #2c2d74;
+                border-radius: 15px;
+                font-weight: bold;
+                text-decoration: none;
+                color: inherit;
+                outline: none;
+            }
+             .header_button:hover .button_icon {
+                 filter: none !important;
+                 -webkit-filter: none !important;
+                 mix-blend-mode: normal !important;
+             }
+    
+            .header_button:hover{
+                background-color: #2c2d74;
+                color: #ffffff;
+            }
+            .fixed_width_header_button {
+                width: 270px;
+            }
+            .main_content {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: stretch;
+                justify-content: center;
+                gap: 20px;
+                max-width: 1200px;
+                margin: 20px 20px 0 20px;
+            }
+            .left_content {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .right_content {
+                display: flex;
+                flex-direction: column;
+            }
+            .descriptions_box {
+                gap: 15px;
+                display: flex;
+                flex-direction: column;
+            }
+            .description {
+                width: 100%;
+                text-align: center;
+            }
+            .box {
+                background-color: #f7f7f9;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .box h2 {
+                font-size: 20px;
+                color: #003366;
+                border-bottom: 2px solid #ffcc00;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+            .tags {
+                margin-bottom: 10px;
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                text-align: center;
+                margin-top: 20px;
+                gap: 10px 30px;;
+            }
+            .tag {
+                background-color: #f7f7f9;
+                padding: 10px 15px;
+                align-items: center;
+                text-align: center;
+                cursor: pointer;
+                border: 1px solid #2c2d74;
+                border-radius: 15px;
+                font-weight: bold;
+                text-decoration: none;
+                color: inherit;
+                width: 250px;
+            }
+            .tag:hover{
+                background-color: #2c2d74;
+                color: #ffffff;
+            }
+            .tag:hover .button_icon {
+                 filter: none !important;
+                 -webkit-filter: none !important;
+                 mix-blend-mode: normal !important;
+             }
+            .content_footer {
+                background: #eee;
+                padding: 20px;
+                text-align: center;
+                font-size: 14px;
+                margin-top: 0px !important;
+                color: #666;
+            }
+            .button_icon {
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+                vertical-align: middle;
+            }
+            .services_image_box{
+                display: flex;
+                align-items: center;
+                width: max-content;
+            }
+            .services_image {
+                width: 150px;
+                height: auto;
+                border-radius: 15px;
+            }
+            .flex_row {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .flex_column {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
+            .right_content .box {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+            .right_content .box .questoin_list {
+                flex: 1;
+            }
+            .right_content .box a.header_button {
+                margin-top: 15px;
+                align-self: center;
+            }
+            .questoin_list {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .margin_top {
+                margin-top: 15px !important;
+            }
+            .centered {
+                 justify-content: center;     
+            }
+            .boring_info_box_outer{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .boring_info_box{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 0px 50px;
+                max-width: 1100px;
+            }
+    --></style>
+    <div class="header">
+    <h1>Nezávazné poradenství. Odborná pomoc celý den. Výkup za hotové.</h1>
+    <div class="buttons"><a href="/kontakty" class="header_button fixed_width_header_button"> <img src="/user/documents/upload/ikony/Poradenstvi/icon_writing.png" alt="Icon" class="button_icon" /> KONTAKTUJTE NÁS </a> <a href="/formular" class="header_button fixed_width_header_button"> <img src="/user/documents/upload/ikony/Poradenstvi/icon_writing.png" alt="Icon" class="button_icon" /> MÁM ZÁJEM O PRODEJ </a></div>
+    <h3 class="descrpition_title">Máme v týmu odborníky na mince, medaile,bankovky. Umíme i antiku a mnoho dalšího. Již 25 let s Vámi!</h3>
+    </div>
+    <div class="main_container">
+    <div class="main_container">
+    <h3 class="descrpition_title">Získejte nejlepší cenu za Vaše sběratelské předměty s pomocí našich odborníků.</h3>
+    <div class="main_content">
+    <div class="left_content">
+    <div class="box">
+    <h2>Mezi naše služby patří</h2>
+    <div class="flex_row centered">
+    <div class="flex_column">
+    <ol class="descriptions_box">
+    <li>Pomoc při určení materiálu</li>
+    <li>Ocenění jednotlivých kusů i celých sbírek</li>
+    <li>Posouzení pravosti materiálu</li>
+    <li>Vypracování odborného posudku dle potřeby</li>
+    <li>Zastupování klientů při prodeji a nákupu na aukcích</li>
+    </ol>
+    </div>
+    <div class="services_image_box"><img class="services_image" src="/user/documents/upload/obrazky/Poradenstvi/Services_image.webp" /></div>
+    </div>
+    </div>
+    <div class="box">
+    <h2>Více než čtvrt století už je něco</h2>
+    <div class="descriptions_box">
+    <div class="description">Máme v týmu odborníky vydávající v oboru velmi uznávané publikace</div>
+    <div class="description">Skvělá hodnocení na Firmách, Google, Heuréce a dalších platformách</div>
+    <div class="description">Zkušenosti načich zákazníků si můžete přečíst <span style="text-decoration: underline;"><a href="https://www.google.com/maps/place/AUREA+Numismatika+a.s.+-+aukce,+top+mince,+výkup+mincí,+medailí+a+bankovek/@50.0692877,14.4025488,17z/data=!4m18!1m9!4m8!1m0!1m6!1m2!1s0x470b9482e3dc2ea3:0x5497c804a42b6a87!2sOstrovského+4,+150+00+Praha+5-Smíchov!2m2!1d14.4051291!2d50.0692843!3m7!1s0x470b9482e3dc2ea3:0x5497c804a42b6a87!8m2!3d50.0692843!4d14.4051291!9m1!1b1!16s%2Fg%2F1tdq990k?entry=ttu&amp;g_ep=EgoyMDI1MDMwMi4wIKXMDSoASAFQAw%3D%3D">ZDE</a></span></div>
+    </div>
+    </div>
+    </div>
+    <div class="right_content">
+    <div class="box">
+    <h2>Často se nás ptáte</h2>
+    <div class="questoin_list"><a target="_blank" href="/otazky/?TopicId=0&amp;QuestionId=0" rel="noopener noreferrer">Jak určit hodnotu mince?</a> <a target="_blank" href="/otazky/?TopicId=13&amp;QuestionId=2" rel="noopener noreferrer">Co je NGC grading a proč je důležitý?</a> <a target="_blank" href="/otazky/?TopicId=13&amp;QuestionId=6" rel="noopener noreferrer">Kolik stojí NGC grading? (U nás nejlevnější na trhu!)</a> <a target="_blank" href="/otazky/?TopicId=4&amp;QuestionId=4" rel="noopener noreferrer">Jak získat odborný posudek na mince a bankovky?</a> <a target="_blank" href="/otazky/?TopicId=3&amp;QuestionId=0" rel="noopener noreferrer">Jaké jsou nejstarší mince světa?</a> <a target="_blank" href="/otazky/?TopicId=1&amp;QuestionId=8" rel="noopener noreferrer">Jaký je postup při výkupu mincí?</a> <a target="_blank" href="/otazky/?TopicId=1&amp;QuestionId=9" rel="noopener noreferrer">Jaký je postup při výkupu bankovek?</a> <a target="_blank" href="/otazky/?TopicId=10&amp;QuestionId=2" rel="noopener noreferrer">Jak poznat vzácnou variantu 10 Kč 1993?</a> <a target="_blank" href="/otazky/?TopicId=10&amp;QuestionId=6" rel="noopener noreferrer">Co je 10 Kč a 20 Kč s orlojem a mají sběratelskou hodnotu?</a> <a target="_blank" href="/otazky/?TopicId=1&amp;QuestionId=11" rel="noopener noreferrer">Jaké bankovky jsou nejcennější?</a> <a target="_blank" href="/otazky/?TopicId=0&amp;QuestionId=1" rel="noopener noreferrer">Jak určit hodnotu bankovky?</a></div>
+    <a href="/otazky" class="header_button"> <img src="/user/documents/upload/ikony/Poradenstvi/icon_questions.png" alt="Icon" class="button_icon" /> DALŠÍ ČASTÉ OTÁZKY </a></div>
+    </div>
+    </div>
+    <div class="tags"><a href="/grading-minci" class="tag fixed_width_tag"> <img src="/user/documents/upload/ikony/Poradenstvi/icon_list.png" alt="Icon" class="button_icon" /> GRADING </a> <a href="/investicni-mince" class="tag fixed_width_header_button_bigger"> <img src="/user/documents/upload/ikony/Poradenstvi/icon_bricks.png" alt="Icon" class="button_icon" /> INVESTIČNÍ ZLATO A STŘÍBRO </a> <a href="/e-shop" class="tag fixed_width_tag"> <img src="/user/documents/upload/ikony/Poradenstvi/icon_letter.png" alt="Icon" class="button_icon" /> MINCE &amp; BANKOVKY</a></div>
+    </div>
+    </div>
+    <style><!--
+    /* Obal formuláře pro kontrolu rozestupů */
+    .form_holder {
+      margin-top: 0;
+      padding-top: 0;
+      margin-bottom: 2px;
+    }
+    
+    /* Šířka a vycentrování samotného formuláře */
+    div[id^="wt-form-wrapper-"] {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2px;
+      box-sizing: border-box;
+    }
+    
+    /* Vycentrování tlačítka */
+    div[id^="wt-form-wrapper-"] .f-btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    
+    /* Styl tlačítka */
+    div[id^="wt-form-wrapper-"] button[type="submit"] {
+      color: white;
+      background-color: #2c2d74;
+      font-size: 16px; /* o trošku menší než původních 22px */
+      padding: 1px 2px;
+      border: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+    
+    /* Hover efekt tlačítka */
+    div[id^="wt-form-wrapper-"] button[type="submit"]:hover {
+      background-color: #f7ca5e;
+      color: black;
+      transform: scale(1.05);
+    }
+    .contact_footer{
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        width: 100%;
+        font-size: 14px;
+        background: #eee;
+        padding: 15px 20px;
+        color: #666;
+    }
+    --></style>
+    <div class="main_container">
+    <div class="tags">
+    <div class="main_container">
+    <div class="tags">&nbsp;[w-form-RT1Z4]</div>
+    </div>
+    <footer class="contact_footer" style="text-align: center; width: 100%; font-size: 14px; background: #eee; padding: 15px 20px; color: #666;">Pro více informací nás kontaktujte na <a href="tel:797626629" style="text-decoration: none; color: inherit;">+420 797 626 629</a> nebo <a href="mailto:info@aurea.cz" style="text-decoration: none; color: inherit;">info@aurea.cz</a></footer>
+    <div class="buttons" style="margin-top: 20px; justify-content: center; display: flex;"><button onclick="toggleInfo()" id="toggleButton" class="header_button fixed_width_header_button"> CHCETE VĚDĚT VÍCE? </button></div>
+    <div id="infoBox" style="display: none; margin-top: 30px; justify-content: center;">
+    <div style="max-width: 1100px; padding: 30px; background: #f9f9f9; border-radius: 10px; border: 1px solid #ddd; width: 100%;">
+    <div class="boring_info_box">
+    <h3><span style="font-size: 16pt;"><strong>Jak ocenit staré mince</strong></span></h3>
+    <h3>Stáří</h3>
+    <p>U mincí, na rozdíl od ostatních starožitností, je mince, která je 200 let stará...</p>
+    <h5>Příklady</h5>
+    <ul>
+    <li>Řím, Filip I., 244-249, stříbrný antoninián - 900 Kč</li>
+    <li>Čechy, Vladislav Jagelonský, 1471-1516, pražský groš - 250 Kč</li>
+    <li>Československo, 1918-1939, 5 haléř 1924 - 400 000 Kč</li>
+    </ul>
+    <h3>Kov</h3>
+    <p>Představa laiků, že zlaté mince jsou nejvzácnější a naopak drobné bronzové nebo měděné nejmíň cenné neplatí. Mincovní kov nám pouze napovídá, do které kategorie by mince mohla patřit, cena se pak stanovuje hlavně na základě dalších kritérií.</p>
+    <h5>Příklady</h5>
+    <ul>
+    <li>František Josef I., 1848-1916, zlatá 10 Koruna 1897 - 3000 Kč</li>
+    <li>František Josef I., 1848-1916, stříbrná 1 Koruna 1906 - 4000 Kč</li>
+    <li>František Josef I., 1848-1916, měděný 1 fillér 1914 - 8000 Kč</li>
+    </ul>
+    <h3>Zachovalost</h3>
+    <p>Stejně tak jako v jiných oblastech i u mincí a bankovek platí, že čím lépe je mince zachovalá, tím je i vyšší cena. Dokonce i velmi běžná mince v bezvadné zachovalosti je většinou ceněná víc než mince vzácná, ale špatně zachovalá.</p>
+    <h5>Příklady</h5>
+    <ul>
+    <li>Československo, bankovka 500 Kč 1929, bezvadná - 5000 Kč</li>
+    <li>Československo, bankovka 500 Kč 1929, 1x přeložená - 2500 Kč</li>
+    <li>Československo, bankovka 500 Kč 1929, značně použitá - 200 Kč</li>
+    <li>Československo, bankovka 500 Kč 1929, roztrhaná, zničená - 0 Kč</li>
+    </ul>
+    <h3>Vzácnost</h3>
+    <p>Vzácnost mincí, medailí nebo bankovek je dána počtem ražených kusů a hlavně počtem kusů, které se dochovaly a jsou dostupné na sběratelském trhu. Je jasné, že čeho je moc a poptávka sběratelů je malá, tam je cena malá, čeho je málo a poptávka je vysoká, tam je i cena vysoká.</p>
+    <h5>Příklady</h5>
+    <ul>
+    <li>Československo, 10 Kč 1930 - 130 Kč</li>
+    <li>Československo, 10 Kč 1931 - 130 Kč</li>
+    <li>Československo, 10 Kč 1932 - 130 Kč</li>
+    <li>Československo, 10 Kč 1933 - 40 000 Kč</li>
+    </ul>
+    <h3>Sběratelský trh</h3>
+    <p>Další kritéria zdánlivě s mincemi a ostatním sběratelským materiálem nesouvisí, přesto někdy dost výrazně ovlivňují cenu. Tady bych uvedl hlavně sběratelskou oblíbenost a ekonomickou sitiaci sběratelů a celé ekonomiky. Je jasné, že nejvíce se sbírají mince nejdostupnější a které nejvíc známe, tedy mince České republiky, Československa, dále pak mince které historicky obíhaly na našem území. Lépe prodejná je běžná mince Františka Josefa než např. vzácnější mince Bolívie nebo Kamerunu. Je nutné ještě poznamenat, že oblíbenost sbírání různých mincí se často mění a proto se mění i ceny.</p>
+    <h5>Příklady</h5>
+    <ul>
+    <li>Československo, 50 Kč 1968, 50 let ČR, před rokem 1989 - 1500 Kč</li>
+    <li>Československo, 50 Kč 1968, 50 let ČR, dnes - 400 Kč</li>
+    <li>Řím, Filip I., 244-249, stříbrný antoninián, cca 1995 - 600 Kč</li>
+    <li>Řím, Filip I., 244-249, stříbrný antoninián, dnes - 900 Kč</li>
+    </ul>
+    <hr />
+    <h3>Stanovení ceny</h3>
+    <p>Cena se stanovuje s přihlédnutím ke všem pěti výše uvedeným kritériím na základě dlouholetých zkušeností a pravidelného sledování sběratelského trhu. Představa, že si někdo koupí katalog a tam si to najde, nebo naivní představa, že to najde na internetu, je zcela mylná.<br />Zcela obecně lze říci, že cenné mince jsou ty, které jsou staré, vzácné, velmi dobře zachovalé a je po nich poptávka. Upřímně řečeno, takových jsem moc neviděl. Naopak nejméně cenné jsou běžné mince, špatně zachovalé a ještě je moc sběratelů neshání. Těch je bohužel většina. Všechny ostatní mince jsou někde mezi a je dost obtížné přesně zhodnotit všechny skutečnosti pro odborníka, natož pro laika.</p>
+    <h3>Jaké mince máte doma?</h3>
+    <p>Zde uvádíme několik nejběžnějších mincí, které se dochovaly téměř v každé rodině. Klidně je můžete věnovat nějakému začínajícímu sběrateli.</p>
+    <div><strong>Marie Terezie</strong></div>
+    <ul>
+    <li>
+    <p>měděné Krejcary 1760-1765 - 20 - 40 Kč</p>
+    </li>
+    </ul>
+    <p><strong>František II.</strong></p>
+    <ul>
+    <li>měděné 1, 3 a 6 Krejcary 1800 - 20 - 40 Kč</li>
+    <li>měděné 15 a 30 Krejcary 1806 - 20 - 50 Kč</li>
+    <li>měděné 1/2 a 1 Krejcary 1816 - 20 - 40 Kč</li>
+    </ul>
+    <p><strong>František Josef I.</strong></p>
+    <ul>
+    <li>stříbrné 1 koruny 1893-1916 - 50 - 80 Kč</li>
+    <li>stříbrné 2 koruny 1912-1913 - 100 - 160 Kč</li>
+    <li>stříbrné 5 koruny 1900-1909 - 200 - 400 Kč</li>
+    <li>Většina drobných mincí 1892-1916 - do 10 Kč</li>
+    </ul>
+    <p><strong></strong><strong>Československo</strong></p>
+    <ul>
+    <li>5 Kč 1928, 1929, 1930 - 30 - 40 Kč</li>
+    <li>5 Kč 1938 - 10 Kč</li>
+    <li>10 Kč 1928, Masaryk - 130 Kč</li>
+    <li>10 Kč 1930, 1931, 1932 - 130 Kč</li>
+    <li>20 Kč 1933, 1934 - 150 Kč</li>
+    <li>20 Kč 1937, Masaryk - 150 Kč</li>
+    <li>Drobné mince I. republika - 5 - 30 Kč</li>
+    <li>Pamětní mince 1945-1953 - 70 - 130 Kč</li>
+    <li>Většina drobných mincí 1945-1953 - do 10 Kč</li>
+    <li>Většina drobných mincí po roce 1953 - do 10 Kč</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <script>function toggleInfo() {
+        var infoBox = document.getElementById("infoBox");
+        var button = document.getElementById("toggleButton");
+        if (infoBox.style.display === "none" || infoBox.style.display === "") {
+          infoBox.style.display = "flex";
+          button.innerText = "SKRÝT INFORMACE";
+        } else {
+          infoBox.style.display = "none";
+          button.innerText = "CHCETE VĚDĚT VÍCE?";
+        }
+      }</script>
+    </div>
+    </div>

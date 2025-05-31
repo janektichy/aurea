@@ -1,0 +1,115 @@
+/* ------------------------------------------------------------------------------
+   Header Buttons Styles
+   ------------------------------------------------------------------------------ */
+.header_buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+  background-color: #f7f7f9;
+  z-index: 1;
+  position: relative;
+}
+
+.header_buttons a {
+  padding: 2px 20px;
+  width: 190px;
+  border: 1px solid #2c2d74;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+.header_buttons a.selected,
+.header_buttons a:hover {
+  background-color: #2c2d74;
+  color: #fff;
+}
+
+/* Hamburger icon styles */
+.header_buttons a.selected span {
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 12px;
+}
+
+.header_buttons a.selected span::before,
+.header_buttons a.selected span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  left: 0;
+}
+
+.header_buttons a.selected span::before {
+  top: 0;
+}
+
+.header_buttons a.selected span::after {
+  bottom: 0;
+}
+
+.header_buttons a.selected span::before {
+  box-shadow: 0 5px 0 white;
+}
+
+/* ------------------------------------------------------------------------------
+   Header Buttons Mobile Layout
+   ------------------------------------------------------------------------------ */
+@media (max-width: 975px) {
+  .header_buttons {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    gap: 10px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    box-sizing: border-box;
+  }
+
+  .header_buttons a {
+    width: 190px;
+    margin: 0;
+    border-radius: 8px;
+    border: 1px solid #2c2d74;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 20px;
+  }
+
+  .header_buttons a:not(.selected) {
+    display: none;
+  }
+
+  .header_buttons.expanded {
+    height: auto;
+  }
+
+  .header_buttons.expanded a {
+    display: flex;
+  }
+
+  /* Show hamburger icon in mobile view */
+  .header_buttons a.selected span {
+    display: block;
+  }
+
+  .header_buttons a.selected {
+    padding-right: 45px; /* Make room for the icon */
+  }
+} 

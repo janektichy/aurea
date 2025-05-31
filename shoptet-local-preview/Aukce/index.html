@@ -1,469 +1,223 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nadcházející Aukce</title>
-  <style>
-    .hidden{
-      display: none;
-    }
-    @media only screen and (max-width: 1200px) {
-      .external-fonts-loaded body .container, body.blank-mode .container, body .container {
-          padding: 0px !important;
-      }
-    }
-    #content-wrapper {
-        padding: inherit; 
-        max-width: none !important;
-        width: 100%;
-    }
-    #footer {
-        margin-top: 0px;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: white;
-        color: #333;
-    }
-    .content-wrapper-in {
-        width: 100%;
-    }
-    .container.breadcrumbs-wrapper {
-        display: none;
-    }
-    article > header {
-        display: none;
-    }
-    .footer-rows {
-        display: none;
-    }
-    /* Header Buttons */
-    .header_buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 10px 0;
-      background-color: #f7f7f9;
-      z-index: 100;
-      position: relative;
-    }
-    .header_buttons a {
-      padding: 2px 20px;
-      width: 190px;
-      border: 1px solid #2c2d74;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
-    }
-    .header_buttons a.selected,
-    .header_buttons a:hover {
-      background-color: #2c2d74;
-      color: #fff;
-    }
 
-    /* Section Buttons */
-    .button_icon {
-      width: 50px;
-      height: 50px;
-      margin-right: 8px;
-      vertical-align: middle;
-      filter: none !important;
-      -webkit-filter: none !important;
-      mix-blend-mode: normal !important;
-    }
-    .section_buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: nowrap;
-      gap: 15px;
-      padding: 0 20px;
-      border-bottom: 3px solid #2c2d74;
-      margin: 20px 0;
-      z-index: 100;
-      position: relative;
-    }
-    .section_buttons a {
-      padding: 14px 20px;
-      font-size: 18px;
-      font-weight: bold;
-      border-left: 3px solid #2c2d74;
-      border-right: 3px solid #2c2d74;
-      border-top: 3px solid #2c2d74;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      text-decoration: none;
-      color: #333;
-      cursor: pointer;
-      background-color: transparent;
-      min-width: 220px;
-      /* In desktop mode all three are visible inline */
-    }
-    .section_buttons a.active {
-      background-color: #2c2d74;
-      color: #fff;
-    }
+  <!-- External styles -->
+  <link rel="stylesheet" href="view_style.css" />
+  <link rel="stylesheet" href="header_style_3.css" />
 
-    /* Content */
-    .content_area {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-    .auction_wrapper {
-      overflow: hidden;
-    }
-    .auction_box {
-      position: relative;
-      border: 3px solid #ccc;
-      border-radius: 15px;
-      background-color: #fff;
-      min-height: 450px;
-      margin-bottom: 20px;
-    }
-    .auction_box h3 {
-      font-size: 32px;
-      color: #2c2d74;
-      border-bottom: 3px solid #ffcc00;
-      padding: 5px;
-      margin: 0px;
-      line-height: 23px;
-    }
-    .auction_box p {
-      margin-bottom: 8px;
-      line-height: 1.4;
-    }
-
-    /* Carousel – original layout */
-    .carousel-container {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    .carousel-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-grow: 1;
-      position: relative;
-      padding-top: 20px;
-      height: 100%;
-    }
-    .carousel-item-box {
-      height: 100%;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      min-height: 400px;
-    }
-    .carousel-item {
-      display: none;
-      flex: 1;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-      height: 100%;
-    }
-    .carousel-item.active {
-      display: flex;
-    }
-    .carousel-item-content {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      height: 100%;
-    }
-    .carousel-item h3 {
-      margin: 0;
-      width: 100%;
-    }
-    /* Arrow Styling */
-    .arrow {
-      border: solid #2c2d74;
-      border-width: 0 6px 6px 0;
-      display: inline-block;
-      padding: 10px;
-    }
-    .right {
-      transform: rotate(-45deg);
-      -webkit-transform: rotate(-45deg);
-    }
-    .left {
-      transform: rotate(135deg);
-      -webkit-transform: rotate(135deg);
-    }
-    .carousel-arrow {
-      display: inline-block;
-      cursor: pointer;
-      z-index: 10;
-    }
-    .carousel-arrow.prev {
-      margin-left: 20px;
-    }
-    .carousel-arrow.next {
-      margin-right: 20px;
-    }
-    /* Dots */
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      padding-bottom: 8px;
-    }
-    .dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #ccc;
-      cursor: pointer;
-      filter: opacity(0.75);
-    }
-    .dot.active {
-      background-color: #2c2d74;
-    }
-    /* Sell/Bid content */
-    .section-content {
-      display: none;
-      padding: 20px 50px;
-    }
-    /* Bottom Boxes */
-    .bottom_boxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 10px;
-      border-top: 3px solid #ccc;
-      border-bottom: 3px solid #ccc;
-      margin-bottom: 20px;
-    }
-    .box {
-      flex: 1;
-      min-width: 220px;
-      background-color: #f9f9f9;
-      border-radius: 4px;
-      text-align: center;
-      padding: 15px;
-    }
-    .box h3, .box p {
-      color: #979696;
-    }
-    /* Footer Links */
-    .footer_box{
-      display: flex;
-      justify-content: space-between;
-    }
-    .footer_links {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: flex-end;
-      text-align: right;
-      margin-bottom: 30px;
-      gap: 20px;
-    }
-    .link{
-        text-decoration: underline;
-        color: #2c2d74;
-        font-weight: bold;
-     }
-
-
-    /* Animation for auction_box switching */
-    @keyframes slideUpBox {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-100%); opacity: 0; }
-    }
-    @keyframes slideDownBox {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    .slide-up-box {
-      animation: slideUpBox 0.5s forwards;
-    }
-    .slide-down-box {
-      animation: slideDownBox 0.5s forwards;
-    }
-    .section_list {
-        gap: 25px;
-        display: flex;
-        flex-direction: column;
-        font-size: 18px;
-    }
-
-    /* Mobile adjustments for dropdown behavior */
-    @media (max-width: 1000px) {
-      .section_buttons {
-          /* Keep the inline layout so the active button remains in its original spot */
-          position: relative;
-          display: flex;
-          justify-content: center;
-          gap: 15px;
-        }
-      /* By default, show only the active button */
-      .section_buttons a:not(.active) {
-          display: none;
-      }
-      /* When open, the non-active buttons are shown as dropdown items */
-      .section_buttons.open a:not(.active) {
-          display: block;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          background-color: white;
-          border: 3px solid #2c2d74;
-          border-top: none;
-          border-radius: 0;
-          min-width: 330px;
-          transition: top 0.3s ease, opacity 0.3s ease;
-          opacity: 0;
-      }
-      .section_buttons.open a:not(.active) {
-          opacity: 1;
-      }
-      .section_buttons a.active {
-          min-width: 330px;
-      }
-      /* Add a down arrow to the active button */
-      .section_buttons a.active::after {
-          content: "";
-          display: inline-block;
-          border: solid white;
-          border-width: 0 6px 6px 0;
-          padding: 10px;
-          transform: rotate(45deg);
-          vertical-align: middle;
-          margin-bottom: 15px;
-          margin-left: 25px;
-      }
-      /* When the screen is narrow, switch to column layout */
-      @media (max-width: 650px) {
-        .footer_box{
-          flex-direction: column;
-          gap: 10px;
-          align-items: center;
-        }
-        .footer_links {
-          flex-direction: column;
-          align-items: center;
-          gap: 10px;
-        }
-      }
-    }
-  </style>
 </head>
+
 <body>
+  <div id="page-import-marker" data-page-key="Auction_Page">PageSpecificKeyHolder</div>
+
   <div class="header_buttons">
-    <a href="#" class="selected">Přehled aukce</a>
-    <a href="https://www.aurea.cz/info/tym/">Náš tým a firma</a>
-    <a href="https://www.aurea.cz/aukcni-rekordy/">Aukční rekordy</a>
-    <a href="https://livebid.cz/organisator/aurea/archived">Aukční archív</a>
+    <a href="/aukce2" class="selected">Přehled aukce</a> 
+    <a href="/tym/#aukce">Náš tým</a> 
+    <a href="/historie/#aukce">Historie</a> 
+    <a href="/aukce-rekordy">Aukční rekordy</a> 
+    <a href="/aukce-archiv/">Aukční archiv</a>
   </div>
-
-  <div class="section_buttons">
-    <a href="#" class="active" data-section="upcoming">
-      <img src="/user/documents/upload/ikony/Poradenstvi/icon_hammer.png" class="button_icon"> NADCHÁZEJÍCÍ AUKCE
-    </a>
-    <a href="#" data-section="sell">
-      <img src="/user/documents/upload/ikony/Poradenstvi/icon_transaction.png" class="button_icon"> CHCI PRODAT V AUKCI
-    </a>
-    <a href="#" data-section="bid">
-      <img src="/user/documents/upload/ikony/Poradenstvi/icon_hands.png" class="button_icon"> CHCI DRAŽIT V AUKCI
-    </a>
-  </div>
-
-  <div class="content_area">
-    <div class="auction_wrapper">
-      <div class="auction_box">
-        <div class="carousel-container" id="carousel">
-          <div class="carousel-content">
-            <div class="carousel-arrow prev">
-              <div class="arrow left"><a class="hidden">hidden</a></div>
+  
+  <div class="page_body">
+      <div class="content_area">
+        <div class="carousel-wrapper">
+          <div class="carousel-inner-wrapper">
+            <div class="carousel-arrow-box">
+              <div class="carousel-arrow prev"><div class="arrow left"><a class="hidden">hidden</a></div></div>
             </div>
-            <div class="carousel-item-box">
-              <div class="carousel-item active">
-                <div class="carousel-item-content">
+            <div class="carousel-container">
+              <div class="carousel-slides-wrapper">
+                <div class="carousel-item-content active" data-carousel-index="0">
                   <h3>Současná aukce</h3>
-                  <p>Současná aukce text</p>
+                  <div id="current-auction-content"></div>
                 </div>
-              </div>
-              <div class="carousel-item">
-                <div class="carousel-item-content">
+                <div class="carousel-item-content" data-carousel-index="1">
                   <h3>Aukční kalendář</h3>
-                  <p>Tady nějakej kalendář</p>
+                  <div id="auction-calendar-content"></div>
                 </div>
-              </div>
-              <div class="carousel-item">
-                <div class="carousel-item-content">
-                  <h3>Něco</h3>
-                  <p>Nějakej text o něčem</p>
+                <div class="carousel-item-content" data-carousel-index="2">
+                  <h3>Vybrané položky</h3>
+                  <div class="auction-previews-wrapper">
+                    <!-- Content will be loaded by JavaScript -->
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="carousel-arrow next">
-              <div class="arrow right"><a class="hidden">hidden</a></div>
+            <div class="carousel-arrow-box">
+              <div class="carousel-arrow next"><div class="arrow right"><a class="hidden">hidden</a></div></div>
             </div>
           </div>
-          <div class="carousel-dots">
-            <span class="dot active" data-index="0"><a class="hidden">hidden</a></span>
-            <span class="dot" data-index="1"><a class="hidden">hidden</a></span>
-            <span class="dot" data-index="2"><a class="hidden">hidden</a></span>
+          <div class="carousel-controls-wrapper">
+            <div class="carousel-controls">
+              <button class="play-pause-btn" aria-label="Pause carousel">
+                <svg class="pause-icon" viewBox="0 0 24 24">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+                <svg class="play-icon" viewBox="0 0 24 24" style="display: none;">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+              <div class="carousel-dots">
+                <span class="dot active" data-index="0"><a class="hidden">hidden</a></span>
+                <span class="dot" data-index="1"><a class="hidden">hidden</a></span>
+                <span class="dot" data-index="2"><a class="hidden">hidden</a></span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="section-content" id="sell-content">
-          <h3>Prodej v aukci</h3>
-          <ul class="section_list">
-            <li><b>25 let zkušeností</b> a odborné znalosti našich expertů zaručují profesionální přístup.</li>
-            <li>Díky aukčnímu prodeji máte možnost dosáhnout <b>nejlepší ceny</b> na trhu.</li>
-            <li><b>Zboží</b> přijímáme po celý rok. Váš materiál vždy pečlivě posoudíme.</li>
-            <li>Kontaktovat nás můžete prostřednictvím online formuláře, e-mailu, telefonu nebo osobně.</li>
-          </ul>
 
+        
+        
+        <!-- Flex container for the two auction boxes -->
+        <div class="auction_flex_container">
+          <div class="auction_box">
+            <div class="section-content" id="sell-content">
+              <h3>Prodej v aukci</h3>
+              <div class="section_body">
+                <ul class="section_list">
+                  <li>Více než <b>25 let</b> s Vámi</li>
+                  <li><b>Osobitý</b>, <b>diskrétní</b> přístup</li>
+                  <li>Aukční prodej dosahuje <b>lepších cen</b></li>
+                  <li>Zboží přijmáme po <b>celý rok</b></li>
+                </ul>
+                <div class="section_link_box">
+                  <a class="link" href="/aukce-prodej/">Mám zájem o prodej</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="auction_box">
+            <div class="section-content" id="bid-content">
+              <h3>Dražba v aukci</h3>
+              <div class="section_body">
+                <ul class="section_list">
+                  <li>Zůčastněte se aukcí</li>
+                  <li>Vyžíváme <b>aukční platformu</b></li>
+                  <li>Jednoduchá <b>online registrace</b></li>
+                  <li>Pod vedením <b>zkušených</b> licitátorů</li>
+                </ul>
+                <div class="section_link_box">
+                  <a class="link" href=/aukce-nakup/">Mám zájem o koupi</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="section-content" id="bid-content">
-          <h3>Dražba v aukci</h3>
-          <ul class="section_list">
-            <li>Zúčastněte se našich aukcí – ať už <b>osobně</b> v sále, <b>online</b> přes <a class="link" href="https://livebid.cz/">LiveBid.cz</a> nebo <b>telefonicky</b> po předchozí domluvě.</li>
-            <li>Registrace je jednoduchá a provádí se buď online, nebo přímo před aukcí v místě konání.</li>
-            <li>Naše aukce probíhají pod vedením zkušených licitátorů a garantují transparentní a férový průběh.</li>
-            <li>Podrobné informace o registraci a průběhu dražby najdete na <a class="link" href="https://livebid.cz/">Auctions - Livebid.cz</a>, v našich obchodních podmínkách, dražebním řádu a FAQ.</li>
+        
+        <div class="bottom_boxes">
+          <div class="box">
+            <h3>TISÍCE KUPUJÍCÍCH</h3>
+            <p>Vybrané položky putují do dražeb.</p>
+          </div>
+          <div class="box">
+            <h3>ČTVRT STOLETÍ</h3>
+            <p>Nabízíme aukční služby již mnoho let.</p>
+          </div>
+          <div class="box">
+            <h3>MEDIÁLNÍ POZORNOST</h3>
+            <p>Naše aukce jsou sledovány širokou veřejností.</p>
+          </div>
+        </div>
+
+        <!-- =====  AUKČNÍ ODPOČET  ===== -->
+        <div class="countdown-wrapper" data-start="2025-05-24T09:30:00+02:00">
+          <h3>Následující sálová aukce startuje za</h3>
+          <div id="countdown">
+            <span><b id="d">00</b><small>dnů</small></span> 
+            <span><b id="h">00</b><small>hod</small></span> 
+            <span><b id="m">00</b><small>min</small></span> 
+            <span><b id="s">00</b><small>s</small></span>
+          </div>
+          <p class="small-note">◉ <a href="/kontakty/#aukce">Hotel Orea Angelo</a> • 14. 9. 2025 v 10:00</p>
+        </div>
+        
+        <!-- Records section -->
+        <div class="records-wrapper">
+          <h3>Top aukční rekordy AUREA</h3>
+          <ul class="records-grid">
+            <li>
+              <span class="price">10,3 mil. Kč</span>
+              <span class="item">Desetidukát Fridrich Falcký (1620)</span>
+              <small>2022</small>
+            </li>
+            <li>
+              <span class="price">8,55 mil. Kč</span>
+              <span class="item">10 Dukát Fridrich Falcký (1620)</span>
+              <small>2022</small>
+            </li>
+            <li>
+              <span class="price">6,5 mil. Kč</span>
+              <span class="item">Saský 20 dukát Christian II. (1610)</span>
+              <small>2013</small>
+            </li>
+            <li>
+              <span class="price">5,55 mil. Kč</span>
+              <span class="item">10 Dukát Ferdinand III., Olomouc (1636)</span>
+              <small>2022</small>
+            </li>
+            <li>
+              <span class="price">4,65 mil. Kč</span>
+              <span class="item">2 Dukát Jáchymov (1560)</span>
+              <small>2019</small>
+            </li>
+            <li>
+              <span class="price">3,90 mil. Kč</span>
+              <span class="item">10 Dukát Brno (1648)</span>
+              <small>2022</small>
+            </li>
           </ul>
+          <div class="more-records">
+            <a href="/aukce-rekordy/" class="btn-records">Zobrazit kompletní přehled »</a>
+          </div>
+        </div>
+
+        <!-- =====  PSALO SE O NÁS  ===== -->
+        <section class="press-section">
+        <h2>Psalo se o nás</h2>
+        <ul class="press-list">
+        <li><small>[2006] · Novinky.cz</small> <a href="https://www.novinky.cz/clanek/koktejl-petihaler-se-prodal-za-253-000-korun-40143081" target="_blank" rel="noopener noreferrer"> Pětihaléř se prodal za 253 000 Kč </a> <a href="/user/documents/upload/gallery/ArchivedNews/Pětihaléř se prodal za 253 000 korun - Novinky.pdf" target="_blank" class="archive" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2008] · Lidovky.cz</small> <a href="https://www.lidovky.cz/domov/cena-zlateho-dvoudukatu-na-aukci-vyrovnala-rekord.A080526_000021_ln_noviny_sko" target="_blank" rel="noopener noreferrer"> Cena zlatého dvoudukátu vyrovnala rekord </a> <a href="/user/documents/upload/gallery/ArchivedNews/Cena zlatého dvoudukátu na aukci vyrovnala rekord _ Česko _ Lidovky.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2010] · Aktuálně.cz</small> <a href="https://zpravy.aktualne.cz/finance/petihaler-z-roku-1924-nasel-kupce-za-pul-milionu-korun/r~i:article:684702/" target="_blank" rel="noopener noreferrer"> Pětihaléř z roku 1924 našel kupce za půl milionu </a> <a href="/user/documents/upload/gallery/ArchivedNews/Pětihaléř z roku 1924 našel kupce za půl milionu korun - Aktuálně.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2010] · Deník</small> <a href="https://www.denik.cz/ekonomika/petihaler-z-roku--se-vydrazil-za--tisic-korun.html" target="_blank" rel="noopener noreferrer"> Pětihaléř z roku 1924 se vydražil za 506 tisíc Kč </a> <a href="/user/documents/upload/gallery/ArchivedNews/Pětihaléř z roku 1924 se vydražil za 506 tisíc korun - Deník.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2010] · Lidovky.cz</small> <a href="https://www.lidovky.cz/domov/valecnym-hrdinou-naoko-rad-bileho-lva-na-prodej-nikdo-ho-nechtel.A101205_153310_ln_domov_ter" target="_blank" rel="noopener noreferrer"> Řád Bílého lva na prodej – nikdo ho nechtěl </a> <a href="/user/documents/upload/gallery/ArchivedNews/Válečným hrdinou naoko_ Řád bílého lva na prodej, nikdo ho nechtěl _ Česko _ Lidovky.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2013] · Blesk.cz</small> <a href="https://www.blesk.cz/clanek/zpravy-live-zajimavosti/222980/sasky-20-dukat-byl-vydrazen-za-6-5-milionu-korun.html" target="_blank" rel="noopener noreferrer"> Saský 20 dukát vydražen za 6,5 milionu </a> <a href="/user/documents/upload/gallery/ArchivedNews/Sasky 20 dukát byl vydražen za 6,5 milionu korun _ Blesk.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2013] · Artplus.cz</small> <a href="https://artplus.cz/cs/aukcni-zpravodajstvi/1/novy-cesky-numismaticky-rekord" target="_blank" rel="noopener noreferrer"> Nový český numismatický rekord </a> <a href="/user/documents/upload/gallery/ArchivedNews/Nový český numismatický rekord _ Artplus.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2017] · Lidovky.cz</small> <a href="https://www.lidovky.cz/relax/zajimavosti/historicka-polska-mince-byla-vydrazena-za-vice-nez-dva-miliony.A171202_214914_ln-zajimavosti_ele" target="_blank" rel="noopener noreferrer"> Historická polská mince vydražena za víc než 2 miliony </a> <a href="/user/documents/upload/gallery/ArchivedNews/Historickou polskou minci vydražili v Praze za víc než dva miliony _ Zajímavosti _ Lidovky.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2019] · Lidovky.cz</small> <a href="https://www.lidovky.cz/domov/puvodni-rektorsky-retez-vse-se-drazit-nebude-byl-stazen-z-aukce.A190515_154320_ln_domov_form" target="_blank" rel="noopener noreferrer"> Kradené neprodáváme – řetěz VŠE stažen z aukce </a> <a href="/user/documents/upload/gallery/ArchivedNews/Rektorovi VŠE někdo nejspíš ukradl cermoniální řetěz. Objevil se na aukci, která se ruší _ Česko _ Lidovky.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2022] · Deník</small> <a href="https://www.denik.cz/ekonomika/desetidukat-mince-praha-aukce-drazba-historie.html" target="_blank" rel="noopener noreferrer"> Desetidukát vydražen za více než 10 milionů </a> <a href="/user/documents/upload/gallery/ArchivedNews/Desetidukát za více než 10 milionů_ V aukci se dražila historická mince z Prahy - Deník.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2022] · Pražská Drbna</small> <a href="https://prazska.drbna.cz/zpravy/spolecnost/9120-vzacny-ctyri-sta-let-stary-desetidukát-se-v-aukci-prodal-za-vic-nez-deset-milionu.html" target="_blank" rel="noopener noreferrer"> Vzácný čtyři sta let starý desetidukát za 10,3 milionu </a> <a href="/user/documents/upload/gallery/ArchivedNews/Vzácný čtyři sta let starý desetidukát se v aukci prodal za víc než deset milionů.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2022] · Reflex.cz</small> <a href="https://www.reflex.cz/clanek/zajimavosti/113694/mince-jako-vasen-i-investice.html" target="_blank" rel="noopener noreferrer"> Mince jako vášeň i investice </a> <a href="/user/documents/upload/gallery/ArchivedNews/Mince jako vášeň i investice _ Reflex.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2023] · Artplus.cz</small> <a href="https://artplus.cz/cs/aukcni-zpravodajstvi/1/stare-mince-za-tisice-i-miliony-korun" target="_blank" rel="noopener noreferrer"> Staré mince za tisíce i miliony korun </a> <a href="/user/documents/upload/gallery/ArchivedNews/Staré mince za tisíce i miliony korun _ Artplus.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2024] · Život v Česku</small> <a href="https://zivotvcesku.cz/vzacna-desetikoruna-se-konecne-nasla-jeji-cena-je-pohadkova-podobna-muze-byt-i-ve-vasi-penezence-a-zlepsit-vam-vanoce/" target="_blank" rel="noopener noreferrer"> Vzácná desetikoruna se konečně našla, cena je pohádková </a> <a href="/user/documents/upload/gallery/ArchivedNews/Vzácná desetikoruna se konečně našla, její cena je pohádková. Podobná může být i ve vaší peněžence a zlepšit vám Vánoce _ Život v Česku.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        <li><small>[2024] · TN.cz</small> <a href="https://tn.nova.cz/zpravodajstvi/clanek/586781-vzacna-desetikoruna-muze-majiteli-vydelat-v-drazbe-statisice" target="_blank" rel="noopener noreferrer"> Vzácná desetikoruna může majiteli vydělat statisíce </a> <a href="/user/documents/upload/gallery/ArchivedNews/Vzácná desetikoruna může majiteli vydělat v dražbě statisíce _ TN.cz.pdf" class="archive" target="_blank" rel="noopener noreferrer">(archiv PDF)</a></li>
+        </ul>
+        </section>
+
+        <div class="contact-buttons-box">
+          <a href="/kontakty" class="contact-button">Kontaktujte nás</a>
+          <a href="/prodej/#open-vykup-form" class="contact-button">Mám zájem o prodej</a>
+        </div>
+
+        <div class="footer_box">
+          <a class="link" href="https://www.aurea.cz/aukce-zkratky/">Aukční zkratky</a>
+          <div class="footer_links">
+            <a class="link" href="https://www.aurea.cz/aukce-drazebni-rad/">Aukční řád</a>
+            <a class="link" href="https://www.aurea.cz/aukce-drazebni-rad/">Obchodní podmínky</a>
+            <a class="link" href="https://www.aurea.cz/aukce-gdpr/">Ochrana osobních údajů</a>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="bottom_boxes">
-      <div class="box">
-        <h3>TISÍCE KUPUJÍCÍCH</h3>
-        <p>Vybrané položky putují do dražeb.</p>
-      </div>
-      <div class="box">
-        <h3>ČTVRT STOLETÍ</h3>
-        <p>Nabízíme aukční služby již mnoho let.</p>
-      </div>
-      <div class="box">
-        <h3>MEDIÁLNÍ POZORNOST</h3>
-        <p>Naše aukce jsou sledovány širokou veřejností.</p>
-      </div>
-    </div>
-
-    <div class="footer_box">
-      <a class="link" href="https://www.aurea.cz/kvalita-minci---quality---munzenqualitat/">Aukční zkratky</a>
-      <div class="footer_links">
-        <a class="link" href="https://www.aurea.cz/aukce-drazebni-rad/">Aukční řád</a>
-        <a class="link" href="https://www.aurea.cz/aukce-drazebni-rad/">Obchodní podmínky</a>
-        <a class="link" href="https://www.aurea.cz/aukce-gdpr/">Ochrana osobních údajů</a>
-      </div>
-    </div>
   </div>
+
+  <!-- External JavaScript -->
+  <script src="./carousel.js"></script>
+  <script src="./carousel_current_auction.js"></script>
+  <script src="./carousel_calendar.js"></script>
+  <script src="./auction_previews.js" defer></script>
+  <script src="./header_buttons_layout_3.js"></script>
 </body>
-<script src="view_navigation_3.js"></script>
 </html>

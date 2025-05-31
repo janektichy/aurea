@@ -1,0 +1,37 @@
+{
+    "title" : "Kalendář aukcí pro rok 2025",
+    "months" : [
+        {
+            "date" : "24. 5. 2025, 9:30",
+            "name" : "116. Sálová aukce",
+            "items": "Mince, medaile, faleristika",
+            "link" : "https://livebid.cz/auction/aurea_116"
+        },
+        {
+            "date" : "26.-30. 5. 2025",
+            "name" : "56. eAukce",
+            "items": "Mince, medaile, faleristika, papírová platidla",
+            "link" : "https://livebid.cz/auction/aurea_56ea"
+        },
+        {
+            "date" : "5. 10. 2025, 18:00",
+            "name" : "57. eAukce",
+            "items": "Mince, medaile, faleristika"
+        },
+        {
+            "date" : "23. 11. 2025, 18:00",
+            "name" : "58. eAukce",
+            "items": "Odznaky"
+        },
+        {
+            "date" : "29. 11. 2025, 9:30",
+            "name" : "117. Sálová aukce",
+            "items": "Mince, medaile, faleristika, papírová platidla"
+        },
+        {
+            "date" : "30. 11. 2025, 18:00",
+            "name" : "59. eAukce",
+            "items": "Mince, medaile, faleristika, papírová platidla"
+        }
+    ]
+}

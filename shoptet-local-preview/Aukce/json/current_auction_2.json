@@ -1,0 +1,23 @@
+{
+    "title" : "Sálová aukce 116",
+    "date" : "24. 5. 2025, 9:30",
+    "place_text" : "Orea Hotel Angelo, Radlická 3216, Praha 5",
+    "auction_link" : "https://livebid.cz/auction/aurea_116",
+    "auction_program" : [
+        {
+            "program_date" : "9.30 - 16.00 hod.",
+            "program_description" : "Mince, medaile, faleristika (položky 1 - 646)"
+        },
+        {
+            "program_date" : "15.00 - 18.00 hod.",
+            "program_description" : "Papírová platidla (položky 801 - 943)"
+        }
+    ],
+    "item_preview" : {
+        "image" : "/user/documents/ViewScripts/Aukce/images/current_auction_item_preview_v1.jpg",
+        "title" : "Československo",
+        "category" : "1918 - 1939",
+        "price" : "500 000 Kč",
+        "item_link" : "https://livebid.cz/auction/aurea_116/detail/526"
+    }
+}

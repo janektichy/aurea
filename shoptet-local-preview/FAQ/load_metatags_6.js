@@ -1,19 +1,10 @@
 // Wait for HTML page to load, so the page marker is locatable
 document.addEventListener('DOMContentLoaded', function() {
-    // Locate hidden page marker
-    var marker = document.getElementById('page-meta-marker');
-    if (marker) {
-        let pageKey = marker.getAttribute('data-page-key');
-        // Get the page-specific key from the data attribute
 
-        // If page is FAQ, load meta tag config from XML
-        if (pageKey === 'FAQ_Page_Id') { // Fixed comparison operator
-            const urlParams = new URLSearchParams(window.location.search);
-            let topicId = getTopicIdFromUrl(),
-                questionId = getQuestionIdFromUrl();
-            loadFAQMetaTags(topicId, questionId);
-        }
-    } // <- This closing bracket was missing
+    let topicId = getTopicIdFromUrl(),
+     questionId = getQuestionIdFromUrl();
+     
+    loadFAQMetaTags(topicId, questionId);
 
     function loadFAQMetaTags(topicId, questionId) {
         $.ajax({
